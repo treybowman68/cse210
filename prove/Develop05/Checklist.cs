@@ -1,15 +1,13 @@
 
-using System.Globalization;
-using System.Xml.Schema;
-
 public class Checklist : Goal{
    private readonly int _pointsPerStep;
    
     private readonly int _stepsToComplete;
-    private int _stepsCompleted;
+    private int _stepsCompleted = 0;
 
 // this is a constructor below
-    public Checklist(string goal,string description,int points,bool status,int pointsPerStep) : base(goal, description, points, status) {
+    public Checklist(string goal, string description, int points, int stepsToComplete, int pointsPerStep) : base(goal, description, points) {
+        _stepsToComplete = stepsToComplete;
         _pointsPerStep = pointsPerStep;
     }
     public override int MarkComplete()
@@ -21,20 +19,16 @@ public class Checklist : Goal{
         _status = true;
 		return _points;
     }
+    
     //for checklist goals it should show how many times the goal 
     // has been completed (for example Completed 2/5 times).
-    	public void Display(){
-		//Goal
-        //Description
-        //Points
-        //Status
-        //PointsPerStep
-        // Number of times done(Steps completed)
-        // number of times until done(Steps to complete)
-       Console.WriteLine($"Completed {_stepsCompleted}/ {_stepsToComplete} ");
-
+    public override void Display() {
+		Console.WriteLine($"{GetCheckbox()} {_goal} - {_points} - {_stepsCompleted}/{_stepsToComplete}\n > {_description} ");
 	}
 
-
+    public override string ToString()
+    {
+        return $"{GetCheckbox()} {_goal} {_stepsCompleted}/{_stepsToComplete}";
+    }
 
 }

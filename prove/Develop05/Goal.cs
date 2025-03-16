@@ -1,21 +1,22 @@
 
-using System.Net;
 
 public class Goal{
     protected string _goal;
     protected string _description;
     protected int _points;
-    protected bool _status;
-	public Goal(string goal,string description,int points,bool status) {
+    protected bool _status = false;
+	public Goal(string goal,string description,int points) {
 		_goal = goal;
 		_description = description;
 		_points = points;
-		_status = status;
 	}
 
-	public void Display(){
-		string checkbox = _status ? "[x]" : "[ ]" ;
-		Console.WriteLine($"{checkbox} {_goal} - {_points}\n > {_description} ");
+	public virtual void Display(){
+		Console.WriteLine($"{GetCheckbox()} {_goal} - {_points}\n > {_description} ");
+	}
+
+	protected string GetCheckbox() {
+		return _status ? "[x]" : "[ ]" ;
 	}
 
 	public virtual int MarkComplete() {
@@ -23,6 +24,12 @@ public class Goal{
 		_status = true;
 		return _points;
 	}
+
+	public override string ToString()
+    {
+        return $"{GetCheckbox()} {_goal}";
+    }
+
 
 	
 }
