@@ -19,9 +19,5 @@ public class Entry {
         date = setDate;
     }
 
-    public Entry(string newEntry){
-        prompt = Split(char[],Int32)
-        date =
-        response =
-    }
+   
 }

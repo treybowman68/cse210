@@ -1,0 +1,3 @@
+public class Skip: Special {
+    
+}
