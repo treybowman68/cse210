@@ -11,7 +11,7 @@ public class Entry {
     public string displayEntry(){
         return date + " - " + prompt + " = " + response;
     }
-
+0
     // Construct new entry from user
     public Entry(DateTime setDate) {
         PromptGenerator promptgen = new PromptGenerator();
@@ -19,5 +19,9 @@ public class Entry {
         date = setDate;
     }
 
-   
+    public Entry(string newEntry){
+        prompt = Split(char[],Int32);
+        date =  
+        response =newEntry;
+    }
 }

@@ -7,4 +7,15 @@ public class Card {
 
     public string icon;
     public string color;
+    public string getcolor(){
+        return color;
+
+    public string geticon(){
+        return icon;
+    }
+    public void setColor(string newColor){
+        color = newColor;
+    }
+    public abstract string display();
+    }
 }
